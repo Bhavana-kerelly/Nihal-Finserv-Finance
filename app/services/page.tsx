@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 /* ---------------- Data ---------------- */
 const services = [
@@ -38,7 +39,7 @@ const slideVariants = {
     scale: 1,
     transition: {
       duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
+      ease: "cubic-bezier(0.42,0,0.58,1)",
       when: "beforeChildren",
       staggerChildren: 0.08,
     },
@@ -47,7 +48,7 @@ const slideVariants = {
     opacity: 0,
     x: dir > 0 ? -40 : 40,
     scale: 0.99,
-    transition: { duration: 0.45, ease: [0.4, 0, 1, 1] },
+    transition: { duration: 0.45, ease: "cubic-bezier(0.42,0,0.58,1)" },
   }),
 };
 
@@ -108,7 +109,7 @@ export default function ServicesSlider() {
     return () => clearInterval(id);
   }, [nextSlide, paused]);
 
-  const handleDragEnd = (_, info) => {
+  const handleDragEnd = (_: unknown, info: { offset: { x: number } }) => {
     const threshold = 80;
     if (info.offset.x < -threshold) nextSlide();
     else if (info.offset.x > threshold) prevSlide();
@@ -178,7 +179,6 @@ export default function ServicesSlider() {
             <motion.div
               key={current}
               className="absolute inset-0"
-              variants={slideVariants}
               initial="initial"
               animate="animate"
               exit="exit"
@@ -276,6 +276,7 @@ export default function ServicesSlider() {
         }
       `}</style>
     </section>
+    <Footer />
     </>
   );
 }
