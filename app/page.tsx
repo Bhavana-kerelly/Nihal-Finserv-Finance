@@ -1,4 +1,3 @@
-import NavbarWithContent from '../components/Navbar';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import ExpertIntro from '../components/ExpertIntro';
