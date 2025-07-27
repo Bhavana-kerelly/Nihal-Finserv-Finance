@@ -34,7 +34,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/logo.png"
+              src="Images/Logo.png"
               alt="Nihal Finserv Logo"
               width={100}
               height={40}
